@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navigation from "./components/navigation/navigation";
+import {Route, Switch} from "react-router";
+import Dishes from "./components/dishes/dishes";
+import AddNewDish from "./components/addNewDish/addNewDish";
+import Edit from "./components/edit/edit";
+import Orders from "./components/Orders/Orders";
 
-function App() {
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navigation/>
+      <Switch>
+        <Route path='/' exact component={Dishes} />
+        <Route path='/addNewDish' exact component={AddNewDish} />
+        <Route path='/orders' exact component={Orders} />
+        <Route path='/edit/:id' component={Edit} />
+      </Switch>
     </div>
   );
 }
